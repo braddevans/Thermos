@@ -124,6 +124,7 @@ import com.mojang.authlib.GameProfile;
 // Cauldron start
 import org.bukkit.craftbukkit.command.CraftSimpleCommandMap;
 
+import com.google.common.cache.CacheBuilder;
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.command.server.CommandNetstat;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -160,7 +161,7 @@ public final class CraftServer implements Server {
     public YamlConfiguration configuration = MinecraftServer.configuration; // Cauldron
     private YamlConfiguration commandsConfiguration = MinecraftServer.commandsConfiguration; // Cauldron
     private final Yaml yaml = new Yaml(new SafeConstructor());
-    private final Map<UUID, OfflinePlayer> offlinePlayers = new MapMaker().softValues().makeMap();
+    private final Map<UUID, OfflinePlayer> offlinePlayers = CacheBuilder.newBuilder().softValues().<UUID, OfflinePlayer>build().asMap(); // Cauldron
     private final AutoUpdater updater;
     private final EntityMetadataStore entityMetadata = new EntityMetadataStore();
     private final PlayerMetadataStore playerMetadata = new PlayerMetadataStore();
