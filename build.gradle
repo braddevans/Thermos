@@ -5,10 +5,11 @@ import thermos.VersionParser
 
 buildscript {
     repositories {
-        maven {
-            name 'prok'
-            url 'https://djoveryde.000webhostapp.com/kcauldron/files/'
-        }
+	    jcenter()
+		maven { url "http://nexus.piratescode.co.uk/repository/files/" }
+		maven { url 'http://repo.dmulloy2.net/nexus/repository/public/' }
+		maven { url = "http://hub.spigotmc.org/nexus/content/repositories/snapshots" }
+		maven { url "http://maven.sk89q.com/repo/" }
         maven {
             name 'forge'
             url 'http://files.minecraftforge.net/maven'
@@ -25,7 +26,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-//        classpath files('FGS.jar')
+		// classpath files('FGS.jar')
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
@@ -41,13 +42,14 @@ apply plugin: 'signing'
 
 repositories {
     clear()
+	jcenter()
+	maven { url "http://nexus.piratescode.co.uk/repository/files/" }
+    maven { url 'http://repo.dmulloy2.net/nexus/repository/public/' }
+    maven { url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots" }
+    maven { url "http://maven.sk89q.com/repo/" }
     maven {
         name 'sonatype'
         url 'http://oss.sonatype.org/content/repositories/snapshots/'
-    }
-    maven {
-        name 'prok'
-        url 'https://djoveryde.000webhostapp.com/kcauldron/files/'
     }
     maven {
         name 'forge'
@@ -288,11 +290,10 @@ def getSignatureFiles = {
 publishing {
     repositories {
         maven {
-            name 'ProK'
-            url 'https://repo.prok.pw/'
+            url 'https://nexus.piratescode.co.uk/repository/files/'
             credentials {
-                username project.hasProperty('prokRepoUsername') ? prokRepoUsername : null
-                password project.hasProperty('prokRepoPassword') ? prokRepoPassword : null
+                username 'publish'
+                password 'Pa$$w0rd'
             }
         }
     }
@@ -322,10 +323,11 @@ tasks.generateProjectCauldron << {
     file.append('''
 repositories {
     clear()
-    maven {
-        name 'prok'
-        url 'https://djoveryde.000webhostapp.com/kcauldron/files/'
-    }
+	jcenter()
+	maven { url "http://nexus.piratescode.co.uk/repository/files/" }
+    maven { url 'http://repo.dmulloy2.net/nexus/repository/public/' }
+    maven { url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots" }
+    maven { url "http://maven.sk89q.com/repo/" }
     maven {
         name 'forge'
         url 'http://files.minecraftforge.net/maven'
