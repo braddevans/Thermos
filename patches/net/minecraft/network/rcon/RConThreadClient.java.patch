@@ -30,8 +30,7 @@
 @@ -110,26 +111,23 @@
                      }
                  }
-             }
-+            }
+-            }
              catch (SocketTimeoutException sockettimeoutexception)
              {
 -                break;
@@ -53,7 +52,7 @@
              }
 -
 -            return;
--        }
+        }
      }
  
      private void sendResponse(int p_72654_1_, int p_72654_2_, String p_72654_3_) throws IOException

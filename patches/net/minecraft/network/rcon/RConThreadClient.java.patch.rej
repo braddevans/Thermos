@@ -26,3 +26,33 @@
                  }
  
 ++++ END PATCH
+++++ REJECTED PATCH 2
+                     }
+                 }
+-            }
+             catch (SocketTimeoutException sockettimeoutexception)
+             {
+-                break;
++                return;
+             }
+             catch (IOException ioexception)
+             {
+-                break;
++                return;
+             }
+             catch (Exception exception1)
+             {
+                 field_164005_h.error("Exception whilst parsing RCON input", exception1);
+-                break;
+             }
+             finally
+             {
+                 this.closeSocket();
+             }
+-
+-            return;
+        }
+     }
+ 
+     private void sendResponse(int p_72654_1_, int p_72654_2_, String p_72654_3_) throws IOException
+++++ END PATCH
